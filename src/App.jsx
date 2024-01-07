@@ -21,13 +21,6 @@ const MyCourse = lazy(() => import("./pages/StudentProfilePage/MyCourse"));
 const MyPayment = lazy(() => import("./pages/StudentProfilePage/MyPayment"));
 
 function App() {
-  $(document).ready(function () {
-    $(window).on("load", () => {
-      $(".loading").addClass("--hide");
-    });
-  });
-
-  const a = 5;
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <BrowserRouter>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageLoading from "../../components/PageLoading";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
@@ -10,6 +10,9 @@ import MainContextProvider from "@context/MainContext";
 import AuthContextProvider from "@context/AuthContext";
 
 const MainLayout = () => {
+  useEffect(() => {
+    $(".loading").addClass("--hide");
+  });
   return (
     <MainContextProvider>
       <AuthContextProvider>
