@@ -1,8 +1,8 @@
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthContext } from "@context/AuthContext";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-import { MODAL_TYPES } from "@/constants/general";
 import ReactDOM from "react-dom";
+import { MODAL_TYPES } from "@constants/general";
 
 const AuthModal = () => {
   const { showedModal, handleCloseModal } = useAuthContext();

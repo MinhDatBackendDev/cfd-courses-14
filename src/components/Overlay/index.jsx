@@ -1,4 +1,4 @@
-import { useMainContext } from "@/context/MainContext";
+import { useMainContext } from "@context/MainContext";
 import React from "react";
 
 const Overlay = () => {
