@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PATHS } from "./constants/path";
 import PrivateRoute from "@components/PrivateRoute";
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 
 const MainLayout = lazy(() => import("./layouts/MainLayout"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
@@ -29,35 +29,43 @@ function App() {
 
   const a = 5;
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={PATHS.HOME} element={<MainLayout />}>
-          <Route index element={<HomePage />} />
+    <Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
+        <Routes>
+          <Route path={PATHS.HOME} element={<MainLayout />}>
+            <Route index element={<HomePage />} />
 
-          <Route path={PATHS.COURSE.INDEX} element={<CoursesPage />}></Route>
-          <Route path={PATHS.COURSE.DETAIL} element={<CourseDetailPage />} />
+            <Route path={PATHS.COURSE.INDEX} element={<CoursesPage />}></Route>
+            <Route path={PATHS.COURSE.DETAIL} element={<CourseDetailPage />} />
 
-          <Route path={PATHS.BLOG.INDEX} element={<BlogPage />} />
-          <Route path={PATHS.BLOG.DETAIL} element={<BlogDetailPage />} />
+            <Route path={PATHS.BLOG.INDEX} element={<BlogPage />} />
+            <Route path={PATHS.BLOG.DETAIL} element={<BlogDetailPage />} />
 
-          <Route element={<PrivateRoute redirectPath={PATHS.HOME} />}>
-            <Route path={PATHS.COURSE.ORDER} element={<CourseOrderPage />} />
-            <Route path={PATHS.PROFILE.INDEX} element={<StudentProfilePage />}>
-              <Route index element={<MyInfo />} />
-              <Route path={PATHS.PROFILE.MY_COURSE} element={<MyCourse />} />
-              <Route path={PATHS.PROFILE.MY_PAYMENT} element={<MyPayment />} />
+            <Route element={<PrivateRoute redirectPath={PATHS.HOME} />}>
+              <Route path={PATHS.COURSE.ORDER} element={<CourseOrderPage />} />
+              <Route
+                path={PATHS.PROFILE.INDEX}
+                element={<StudentProfilePage />}
+              >
+                <Route index element={<MyInfo />} />
+                <Route path={PATHS.PROFILE.MY_COURSE} element={<MyCourse />} />
+                <Route
+                  path={PATHS.PROFILE.MY_PAYMENT}
+                  element={<MyPayment />}
+                />
+              </Route>
             </Route>
+
+            <Route path={PATHS.PAYMENT} element={<PaymentMethodPage />} />
+            <Route path={PATHS.CONTACT} element={<ContactPage />} />
+            <Route path={PATHS.ABOUT} element={<AboutPage />} />
+            <Route path={PATHS.PRIVACY} element={<PrivacyPage />} />
+
+            <Route path="*" element={<Page404 />} />
           </Route>
-
-          <Route path={PATHS.PAYMENT} element={<PaymentMethodPage />} />
-          <Route path={PATHS.CONTACT} element={<ContactPage />} />
-          <Route path={PATHS.ABOUT} element={<AboutPage />} />
-          <Route path={PATHS.PRIVACY} element={<PrivacyPage />} />
-
-          <Route path="*" element={<Page404 />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
