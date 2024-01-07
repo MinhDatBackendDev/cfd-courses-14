@@ -1,22 +1,24 @@
-import MainLayout from "./layouts/MainLayout";
-import AboutPage from "./pages/AboutPage";
-import BlogDetailPage from "./pages/BlogDetailPage";
-import BlogPage from "./pages/BlogPage";
-import ContactPage from "./pages/ContactPage";
-import CourseDetailPage from "./pages/CourseDetailPage";
-import CourseOrderPage from "./pages/CourseOrderPage";
-import CoursesPage from "./pages/CoursesPage";
-import HomePage from "./pages/HomePage";
-import PaymentMethodPage from "./pages/PaymentMethodPage";
-import PrivacyPage from "./pages/PrivacyPage";
-import StudentProfilePage from "./pages/StudentProfilePage";
-import Page404 from "./pages/Page404";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MyInfo from "./pages/StudentProfilePage/MyInfo";
-import MyCourse from "./pages/StudentProfilePage/MyCourse";
-import MyPayment from "./pages/StudentProfilePage/MyPayment";
 import { PATHS } from "./constants/path";
 import PrivateRoute from "@components/PrivateRoute";
+import { lazy } from "react";
+
+const MainLayout = lazy(() => import("./layouts/MainLayout"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const BlogDetailPage = lazy(() => import("./pages/BlogDetailPage"));
+const BlogPage = lazy(() => import("./pages/BlogPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const CourseDetailPage = lazy(() => import("./pages/CourseDetailPage"));
+const CourseOrderPage = lazy(() => import("./pages/CourseOrderPage"));
+const CoursesPage = lazy(() => import("./pages/CoursesPage"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const PaymentMethodPage = lazy(() => import("./pages/PaymentMethodPage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const StudentProfilePage = lazy(() => import("./pages/StudentProfilePage"));
+const Page404 = lazy(() => import("./pages/Page404"));
+const MyInfo = lazy(() => import("./pages/StudentProfilePage/MyInfo"));
+const MyCourse = lazy(() => import("./pages/StudentProfilePage/MyCourse"));
+const MyPayment = lazy(() => import("./pages/StudentProfilePage/MyPayment"));
 
 function App() {
   $(document).ready(function () {
